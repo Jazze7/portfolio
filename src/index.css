@@ -28,7 +28,6 @@ a:hover {
 
 body {
 	margin: 0;
-	display: flex;
 	place-items: center;
 	min-width: 320px;
 	min-height: 100vh;
@@ -71,18 +70,46 @@ button:focus-visible {
 	}
 }
 @font-face {
-	font-family: "logo_font";
-	src: url("../fonts/NewAmsterdam-Regular.woff2") format("woff2"),
-		url("../fonts/NewAmsterdam-Regular.woff") format("woff");
+	font-family: "content_font";
+	src: url("./assets/fonts/NewAmsterdam-Regular.woff2") format("woff2"),
+		url("./assets/fonts/NewAmsterdam-Regular.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
-	font-family: "content_font";
-	src: url("BungeeTint-Regular.woff2") format("woff2"),
-		url("BungeeTint-Regular.woff") format("woff");
+	font-family: "logo_font";
+	src: url("./assets/fonts/BungeeTint-Regular.woff2") format("woff2"),
+		url("./assets/fonts/BungeeTint-Regular.woff1") format("woff");
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
 }
+/* styles.css */
+@keyframes gradient-border {
+	0% {
+	  border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
+	}
+	50% {
+	  border-image-source: linear-gradient(45deg, #42e695, #3bb2b8);
+	}
+	100% {
+	  border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
+	}
+  }
+  
+  .gradient-border {
+	border: 3px solid;
+	border-image-slice: 1;
+	border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
+	animation: gradient-border 3s infinite;
+	border-radius: 30px;
+  }
+  
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+	.gradient-border {
+	  border-image-source: linear-gradient(45deg, #42e695, #3bb2b8);
+	}
+  }
+  
