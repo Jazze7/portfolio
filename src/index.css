@@ -88,28 +88,32 @@ button:focus-visible {
 /* styles.css */
 @keyframes gradient-border {
 	0% {
-	  border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
+		border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
 	}
 	50% {
-	  border-image-source: linear-gradient(45deg, #42e695, #3bb2b8);
+		border-image-source: linear-gradient(45deg, #42e695, #3bb2b8);
 	}
 	100% {
-	  border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
+		border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
 	}
-  }
-  
-  .gradient-border {
+}
+
+.gradient-border {
 	border: 3px solid;
 	border-image-slice: 1;
 	border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5);
 	animation: gradient-border 3s infinite;
 	border-radius: 30px;
-  }
-  
-  /* Dark mode */
-  @media (prefers-color-scheme: dark) {
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
 	.gradient-border {
-	  border-image-source: linear-gradient(45deg, #42e695, #3bb2b8);
+		border-image-source: linear-gradient(45deg, #42e695, #3bb2b8);
 	}
-  }
-  
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
