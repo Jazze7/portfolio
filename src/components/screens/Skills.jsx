@@ -28,6 +28,55 @@ import {
 	SiSublimetext,
 } from "react-icons/si";
 import { TbBrandCpp } from "react-icons/tb";
+import styled, { keyframes } from "styled-components";
+
+// Floating Particles Animation
+const floating = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+`;
+
+const Particles = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: -1;
+	pointer-events: none;
+
+	.particle {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 50%;
+		animation: ${floating} 4s ease-in-out infinite;
+	}
+
+	.particle:nth-child(1) {
+		left: 25%;
+		animation-duration: 6s;
+		animation-delay: 1s;
+	}
+	.particle:nth-child(2) {
+		left: 50%;
+		animation-duration: 4s;
+		animation-delay: 2s;
+	}
+	.particle:nth-child(3) {
+		left: 75%;
+		animation-duration: 5s;
+		animation-delay: 3s;
+	}
+	.particle:nth-child(4) {
+		left: 90%;
+		animation-duration: 7s;
+		animation-delay: 4s;
+	}
+`;
 
 function Skills() {
 	const skillCategories = [
@@ -121,7 +170,16 @@ function Skills() {
 	};
 
 	return (
-		<Container maxWidth="lg" className="py-16">
+		<Container maxWidth="lg" className="py-16 relative">
+			{/* Background Particles */}
+			<Particles>
+				<div className="particle"></div>
+				<div className="particle"></div>
+				<div className="particle"></div>
+				<div className="particle"></div>
+			</Particles>
+
+			{/* Main Content */}
 			<motion.div
 				variants={containerVariants}
 				initial="hidden"
@@ -131,6 +189,7 @@ function Skills() {
 					variant="h2"
 					gutterBottom
 					className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center"
+					style={{ fontFamily: "content_font" }}
 				>
 					My Skills
 				</Typography>
@@ -144,6 +203,7 @@ function Skills() {
 							variant="h4"
 							gutterBottom
 							className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center"
+							style={{ fontFamily: "content_font" }}
 						>
 							{category.name}
 						</Typography>
@@ -167,6 +227,9 @@ function Skills() {
 											<Typography
 												variant="body1"
 												className="font-medium"
+												style={{
+													fontFamily: "content_font",
+												}}
 											>
 												{skill.name}
 											</Typography>

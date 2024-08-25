@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+// packages
 import axios from "axios";
 import styled, { keyframes } from "styled-components";
+import { Button, CircularProgress } from "@mui/material";
+
+// store
 import { useSelector } from "react-redux";
-import { Button } from "@mui/material";
 
 export default function ContactModal({ onClose }) {
 	const darkMode = useSelector((state) => state.theme.darkMode);
@@ -11,10 +15,20 @@ export default function ContactModal({ onClose }) {
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [message, setMessage] = useState("");
-	const [statusMessage, setStatusMessage] = useState(""); // State for status message
+	const [statusMessage, setStatusMessage] = useState("");
+	const [loading, setLoading] = useState(false);
+
+	// Lock the scroll when modal is open
+	useEffect(() => {
+		document.body.style.overflow = "hidden";
+		return () => {
+			document.body.style.overflow = "auto"; // Unlock the scroll when modal is closed
+		};
+	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setLoading(true);
 
 		const serviceId = "service_ga38qaf";
 		const templateId = "template_ovr259n";
@@ -41,6 +55,7 @@ export default function ContactModal({ onClose }) {
 
 			if (res.status === 200) {
 				setStatusMessage("Email sent successfully!");
+				onClose();
 			} else {
 				setStatusMessage("Something went wrong. Please try again.");
 			}
@@ -53,6 +68,8 @@ export default function ContactModal({ onClose }) {
 		} catch (error) {
 			setStatusMessage("An error occurred. Please try again.");
 			console.error(error);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -106,15 +123,19 @@ export default function ContactModal({ onClose }) {
 								type="submit"
 								variant="contained"
 								color="success"
+								disabled={loading}
 							>
-								SUBMIT
+								{loading ? (
+									<CircularProgress size={20} />
+								) : (
+									"SUBMIT"
+								)}
 							</Button>
 						</form>
-						{/* Display status message */}
 						{statusMessage && (
 							<p
 								style={{
-									color: "red",
+									color: "green",
 									textAlign: "center",
 									marginTop: "10px",
 								}}
