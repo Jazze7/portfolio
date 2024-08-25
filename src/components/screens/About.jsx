@@ -106,7 +106,7 @@ function About() {
 								className="text-sm sm:text-base leading-relaxed"
 								style={{
 									marginTop: "16px",
-									fontFamily: "content_font",
+									fontFamily: "content-font",
 								}}
 							>
 								Full-stack developer with 2+ years of experience
@@ -120,6 +120,7 @@ function About() {
 								<Button
 									onClick={() => setOpen(true)}
 									variant="contained"
+									style={{ fontFamily: "content-font" }}
 								>
 									Contact Me
 								</Button>

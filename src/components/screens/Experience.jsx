@@ -1,7 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { Typography } from "@mui/material";
 
 export default function Experience() {
+	const darkMode = useSelector((state) => state.theme.darkMode);
 	const experienceData = [
 		{
 			company: "STEYP PVT LTD",
@@ -48,32 +51,90 @@ export default function Experience() {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 1 }}
+			className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 ${
+				darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
+			}`}
 		>
-			<h1>Experience</h1>
-			{experienceData.map((job, index) => (
-				<motion.div
-					key={index}
-					initial={{ y: 50, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{ delay: index * 0.2 }}
-				>
-					<h2>{job.company}</h2>
-					<h3>{job.position}</h3>
-					<p>{job.period}</p>
-					<ul>
-						{job.responsibilities.map((responsibility, idx) => (
-							<motion.li
-								key={idx}
-								initial={{ x: -20, opacity: 0 }}
-								animate={{ x: 0, opacity: 1 }}
-								transition={{ delay: index * 0.2 + idx * 0.1 }}
-							>
-								{responsibility}
-							</motion.li>
-						))}
-					</ul>
-				</motion.div>
-			))}
+			<Typography
+				variant="h3"
+				gutterBottom
+				className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center"
+				style={{ fontFamily: "logo_font" }}
+			>
+				EXPERIENCE
+			</Typography>
+			<div className="space-y-8 sm:space-y-12">
+				{experienceData.map((job, index) => (
+					<motion.div
+						key={index}
+						initial={{ y: 50, opacity: 0 }}
+						animate={{ y: 0, opacity: 1 }}
+						transition={{ delay: index * 0.2 }}
+						className={`rounded-lg shadow-lg overflow-hidden ${
+							darkMode ? "bg-gray-800" : "bg-white"
+						}`}
+					>
+						<div
+							className={`p-4 sm:p-6 ${
+								darkMode
+									? "bg-gradient-to-r from-purple-900 to-indigo-900"
+									: "bg-gradient-to-r from-purple-500 to-indigo-600"
+							}`}
+						>
+							<h2 className="text-xl sm:text-2xl font-semibold text-white font-['content-font']">
+								{job.company}
+							</h2>
+							<h3 className="text-lg sm:text-xl text-indigo-100 font-['content-font']">
+								{job.position}
+							</h3>
+							<p className="text-sm sm:text-base text-indigo-200 font-['content-font']">
+								{job.period}
+							</p>
+						</div>
+						<ul className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+							{job.responsibilities.map((responsibility, idx) => (
+								<motion.li
+									key={idx}
+									initial={{ x: -20, opacity: 0 }}
+									animate={{ x: 0, opacity: 1 }}
+									transition={{
+										delay: index * 0.2 + idx * 0.1,
+									}}
+									className="flex items-start"
+								>
+									<svg
+										className={`w-5 h-5 sm:w-6 sm:h-6 mr-2 flex-shrink-0 ${
+											darkMode
+												? "text-indigo-400"
+												: "text-indigo-500"
+										}`}
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth={2}
+											d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+										/>
+									</svg>
+									<span
+										className={` font-['content-font'] text-sm sm:text-base ${
+											darkMode
+												? "text-gray-300"
+												: "text-gray-700"
+										}`}
+									>
+										{responsibility}
+									</span>
+								</motion.li>
+							))}
+						</ul>
+					</motion.div>
+				))}
+			</div>
 		</motion.div>
 	);
 }
