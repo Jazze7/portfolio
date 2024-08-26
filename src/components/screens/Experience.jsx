@@ -51,17 +51,17 @@ export default function Experience() {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 1 }}
-			className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 ${
+			className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 py-6 sm:py-16 ${
 				darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
 			}`}
 		>
 			<Typography
 				variant="h3"
 				gutterBottom
-				className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center"
+				className="!text-3xl sm:!text-3xl md:!text-4xl font-bold mb-8 text-center"
 				style={{ fontFamily: "logo_font" }}
 			>
-				EXPERIENCE
+				experience
 			</Typography>
 			<div className="space-y-8 sm:space-y-12">
 				{experienceData.map((job, index) => (

@@ -39,11 +39,11 @@ function App() {
 				<section id="about-section">
 					<About />
 				</section>
-				<section id="skills-section">
-					<Skills />
-				</section>
 				<section id="experience-section">
 					<Experience />
+				</section>
+				<section id="skills-section">
+					<Skills />
 				</section>
 				<section id="contact-section">
 					<Contact />

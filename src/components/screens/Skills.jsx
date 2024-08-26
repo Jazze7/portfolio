@@ -121,7 +121,7 @@ function Skills() {
 	};
 
 	return (
-		<Container maxWidth="lg" className="py-16">
+		<Container maxWidth="lg" className="py-8">
 			<motion.div
 				variants={containerVariants}
 				initial="hidden"
@@ -130,10 +130,10 @@ function Skills() {
 				<Typography
 					variant="h3"
 					gutterBottom
-					className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center"
+					className="!text-3xl sm:!text-3xl md:!text-4xl font-bold mb-8 text-center"
 					style={{ fontFamily: "logo_font" }}
 				>
-					My Skills
+					MY SKILL
 				</Typography>
 				{skillCategories.map((category, categoryIndex) => (
 					<motion.div

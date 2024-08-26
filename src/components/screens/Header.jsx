@@ -56,6 +56,7 @@ function Header() {
 									key={item.text}
 									onClick={() => handleScroll(item.id)}
 									style={{ cursor: "pointer" }}
+									className="!font-['content-font']"
 								>
 									{item.text}
 								</ListItem>
@@ -87,6 +88,7 @@ function Header() {
 										button
 										key={index}
 										onClick={() => handleScroll(item.id)}
+										className="!font-['content-font']"
 									>
 										<ListItemText primary={item.text} />
 									</ListItem>

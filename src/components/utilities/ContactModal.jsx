@@ -9,7 +9,7 @@ import { Button, CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
 
 export default function ContactModal({ onClose }) {
-	const darkMode = useSelector((state) => state.theme.darkMode);
+	// const darkMode = useSelector((state) => state.theme.darkMode);
 
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -77,9 +77,9 @@ export default function ContactModal({ onClose }) {
 		<Modal onClick={() => onClose()}>
 			<ModalContent
 				onClick={(e) => e.stopPropagation()}
-				darkMode={darkMode}
+				// darkMode={darkMode}
 			>
-				<Card className="container" darkMode={darkMode}>
+				<Card className="container text-white">
 					<Title className="flex justify-center">
 						Contact Details
 					</Title>
@@ -119,7 +119,11 @@ export default function ContactModal({ onClose }) {
 								className="mb-3 rounded-lg p-3"
 							></textarea>
 							<Button
-								style={{ display: "block", margin: "0 auto" }}
+								style={{
+									display: "block",
+									margin: "0 auto",
+									fontFamily: "content-font",
+								}}
 								type="submit"
 								variant="contained"
 								color="success"
@@ -138,6 +142,7 @@ export default function ContactModal({ onClose }) {
 									color: "green",
 									textAlign: "center",
 									marginTop: "10px",
+									fontFamily: "content-font",
 								}}
 							>
 								{statusMessage}
@@ -199,12 +204,12 @@ const Card = styled.div`
 `;
 
 const Title = styled.h4`
-	font-family: "content_font";
+	font-family: "content-font";
 	font-size: 20px;
 	margin-bottom: 20px;
 `;
 
 const Label = styled.div`
-	font-family: "content_font";
+	font-family: "content-font";
 	margin-bottom: 8px;
 `;
