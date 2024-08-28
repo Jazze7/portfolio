@@ -9,7 +9,6 @@ import {
 	useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import jazze from "../../assets/images/jazze.jpg";
 import Meteor from "../animations/Globe"; // Ensure Meteor component is correctly imported
 import ContactModal from "../utilities/ContactModal";
 
@@ -17,6 +16,7 @@ function About() {
 	const theme = useTheme();
 	const [meteors, setMeteors] = useState([]);
 	const [isOpen, setOpen] = useState(false);
+	const [isImageLoading, setImageLoading] = useState(true);
 
 	useEffect(() => {
 		const createMeteor = () => {
@@ -27,6 +27,10 @@ function About() {
 
 		return () => clearInterval(intervalId);
 	}, []);
+
+	const handleImageLoad = () => {
+		setImageLoading(false);
+	};
 
 	return (
 		<>
@@ -43,20 +47,68 @@ function About() {
 							transition={{ duration: 0.6 }}
 						>
 							<Paper
-								className="p-4 gradient-border" // Apply the gradient border class here
+								className="p-4 gradient-border"
 								elevation={3}
 								style={{
 									overflow: "hidden",
 									boxShadow: "0 15px 30px rgba(0,0,0,0.2)",
+									position: "relative",
+									minHeight: "300px", // Allocates space for the image
 								}}
 							>
+								{isImageLoading && (
+									<Box
+										display="flex"
+										justifyContent="center"
+										alignItems="center"
+										style={{
+											height: "100%",
+											width: "100%",
+											position: "absolute",
+											top: 0,
+											left: 0,
+											right: 0,
+											bottom: 0,
+											zIndex: 1,
+											backgroundColor:
+												theme.palette.background.paper,
+										}}
+									>
+										<motion.div
+											initial={{
+												opacity: 0.5,
+												scale: 0.8,
+											}}
+											animate={{
+												opacity: [0.5, 1, 0.5],
+												scale: [0.8, 1.2, 0.8],
+											}}
+											transition={{
+												duration: 1.5,
+												repeat: Infinity,
+												ease: "easeInOut",
+											}}
+											style={{
+												width: 50,
+												height: 50,
+												borderRadius: "50%",
+												backgroundColor:
+													theme.palette.primary.main,
+											}}
+										/>
+									</Box>
+								)}
 								<img
 									style={{
 										width: "100%",
-										filter: "grayscale(50%)",
+										filter: isImageLoading
+											? "blur(10px)"
+											: "grayscale(50%)",
+										transition: "filter 0.3s ease-out",
 									}}
-									src={jazze}
+									src="https://jazze-devop.s3.ap-south-1.amazonaws.com/images/jazze.webp"
 									alt="Jassim Soopi Mohammed"
+									onLoad={handleImageLoad}
 									className="w-full h-auto rounded-lg transition-all duration-500 hover:filter-none"
 								/>
 							</Paper>

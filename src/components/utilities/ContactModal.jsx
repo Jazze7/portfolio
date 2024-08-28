@@ -182,7 +182,7 @@ const ModalContent = styled.div`
 	padding-top: 5px;
 	animation: ${popup} 0.4s ease-in-out;
 	background-color: #000;
-	@media all and (max-width: 480px) {
+	@media all and (max-width: 768px) {
 		width: 100%;
 		position: absolute;
 		bottom: 0;
@@ -190,6 +190,7 @@ const ModalContent = styled.div`
 		border-bottom-right-radius: 0;
 		animation-name: modal;
 		animation-duration: 0.3s;
+		overflow-y: scroll;
 	}
 `;
 
