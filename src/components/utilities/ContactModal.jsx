@@ -55,7 +55,9 @@ export default function ContactModal({ onClose }) {
 
 			if (res.status === 200) {
 				setStatusMessage("Email sent successfully!");
-				onClose();
+				setTimeout(() => {
+					onClose();
+				}, 3000);
 			} else {
 				setStatusMessage("Something went wrong. Please try again.");
 			}
@@ -190,7 +192,7 @@ const ModalContent = styled.div`
 		border-bottom-right-radius: 0;
 		animation-name: modal;
 		animation-duration: 0.3s;
-		overflow-y: scroll;
+		overflow-x: scroll;
 	}
 `;
 
@@ -200,7 +202,7 @@ const Card = styled.div`
 	@media all and (max-width: 480px) {
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
-		padding: 6px 32px;
+		padding: 50px 32px;
 	}
 `;
 
